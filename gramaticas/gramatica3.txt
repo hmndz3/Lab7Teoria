@@ -1,0 +1,5 @@
+# Gramatica 3 - Ejercicio No. 2
+# Convencion: MAYUSCULA = no terminal, minuscula/digito = terminal, ε = cadena vacia
+S -> ASA | aB
+A -> B | S
+B -> b | ε

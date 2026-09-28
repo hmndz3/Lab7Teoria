@@ -11,6 +11,9 @@ El algoritmo tiene dos etapas:
   2. Para cada producción A -> X1 ... Xk que tenga m símbolos anulables,
      se generan las 2^m combinaciones posibles (cada símbolo anulable se
      conserva o se elimina) y se descartan los cuerpos vacíos resultantes.
+
+Las producciones unarias que puedan aparecer (por ejemplo S -> S) NO se tocan
+aquí: eliminarlas es un paso posterior de la simplificación.
 """
 
 from itertools import product
@@ -104,11 +107,6 @@ def eliminar_producciones_epsilon(gramatica, registrar=None, preservar_vacio=Fal
                 if nuevo_cuerpo == CUERPO_VACIO:
                     descartadas.append(
                         (cabeza, cuerpo, "la combinación vacía se descarta")
-                    )
-                    continue
-                if nuevo_cuerpo == (cabeza,):
-                    descartadas.append(
-                        (cabeza, cuerpo, f"la combinación {cabeza} -> {cabeza} es inútil")
                     )
                     continue
                 nueva.agregar(cabeza, nuevo_cuerpo)

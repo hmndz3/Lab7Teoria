@@ -66,6 +66,10 @@ class PruebasAnulables(unittest.TestCase):
         g = cargar_gramatica(os.path.join(GRAMATICAS, "gramatica1.txt"), verbose=False)
         self.assertEqual(encontrar_anulables(g), {"S", "A", "B", "C"})
 
+    def test_gramatica3(self):
+        g = cargar_gramatica(os.path.join(GRAMATICAS, "gramatica3.txt"), verbose=False)
+        self.assertEqual(encontrar_anulables(g), {"A", "B"})
+
     def test_gramatica2(self):
         g = cargar_gramatica(os.path.join(GRAMATICAS, "gramatica2.txt"), verbose=False)
         self.assertEqual(encontrar_anulables(g), {"S", "A", "B", "C", "D"})
@@ -100,8 +104,16 @@ class PruebasEliminacion(unittest.TestCase):
             "A -> C | a\nB -> C | b\nC -> CDE | CE | DE | E\nD -> A | B | ab",
         )
 
+    def test_resultado_gramatica3(self):
+        g = cargar_gramatica(os.path.join(GRAMATICAS, "gramatica3.txt"), verbose=False)
+        nueva, _, _ = eliminar_producciones_epsilon(g)
+        self.assertEqual(
+            str(nueva),
+            "S -> ASA | AS | SA | S | aB | a\nA -> B | S\nB -> b",
+        )
+
     def test_no_quedan_producciones_epsilon(self):
-        for archivo in ("gramatica1.txt", "gramatica2.txt"):
+        for archivo in ("gramatica1.txt", "gramatica2.txt", "gramatica3.txt"):
             g = cargar_gramatica(os.path.join(GRAMATICAS, archivo), verbose=False)
             nueva, _, _ = eliminar_producciones_epsilon(g)
             for cuerpos in nueva.producciones.values():

@@ -26,6 +26,7 @@ Está hecho en **Python 3** y no necesita instalar nada.
 ```bash
 python lab7.py gramaticas/gramatica1.txt
 python lab7.py gramaticas/gramatica2.txt
+python lab7.py gramaticas/gramatica3.txt
 ```
 
 Para ver qué pasa cuando una gramática está mal escrita:
@@ -73,6 +74,9 @@ quitar. El programa las muestra todas y descarta las que quedan vacías.
 
 **4. Muestra la gramática final**, ya sin producciones-ε.
 
+Si aparecen producciones unarias (como `S -> S` en la gramática 3), se dejan
+tal cual: quitarlas es un paso aparte de la simplificación.
+
 ## Resultados
 
 **Gramática 1**
@@ -94,13 +98,21 @@ C -> CDE | ε                 C -> CDE | CE | DE | E
 D -> A | B | ab              D -> A | B | ab
 ```
 
+**Gramática 3**
+
+```
+S -> ASA | aB                S -> ASA | AS | SA | S | aB | a
+A -> B | S             ==>   A -> B | S
+B -> b | ε                   B -> b
+```
+
 ## Archivos del repositorio
 
 ```
 lab7.py          el programa (esto es lo que se ejecuta)
 src/             el código: validación, lectura del archivo y el algoritmo
-gramaticas/      las gramáticas del Ejercicio 2 y una con un error a propósito
-tests/           13 pruebas unitarias
+gramaticas/      las tres gramáticas del Ejercicio 2 y una con un error a propósito
+tests/           15 pruebas unitarias
 documentos/      el PDF con las respuestas
 guion/           el guion usado para grabar el video
 ```
