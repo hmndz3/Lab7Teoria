@@ -8,7 +8,7 @@ Harry Méndez
 
 ## Video de demostración
 
-🎥 **[Ver video en YouTube](PEGAR_AQUI_EL_ENLACE)**
+🎥 **[Ver video en YouTube](https://youtu.be/gtNPkjKWKYg)**
 
 ---
 
@@ -114,5 +114,4 @@ src/             el código: validación, lectura del archivo y el algoritmo
 gramaticas/      las tres gramáticas del Ejercicio 2 y una con un error a propósito
 tests/           15 pruebas unitarias
 documentos/      el PDF con las respuestas
-guion/           el guion usado para grabar el video
 ```
