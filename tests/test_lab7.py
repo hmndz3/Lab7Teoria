@@ -68,7 +68,7 @@ class PruebasAnulables(unittest.TestCase):
 
     def test_gramatica2(self):
         g = cargar_gramatica(os.path.join(GRAMATICAS, "gramatica2.txt"), verbose=False)
-        self.assertEqual(encontrar_anulables(g), {"A", "B", "C"})
+        self.assertEqual(encontrar_anulables(g), {"S", "A", "B", "C", "D"})
 
 
 class PruebasCombinaciones(unittest.TestCase):
@@ -96,8 +96,8 @@ class PruebasEliminacion(unittest.TestCase):
         nueva, _, _ = eliminar_producciones_epsilon(g)
         self.assertEqual(
             str(nueva),
-            "S -> ABaC | ABa | AaC | Aa | BaC | Ba | aC | a\n"
-            "A -> BC | B | C\nB -> b\nC -> D\nD -> d",
+            "S -> aAa | aa | bBb | bb\n"
+            "A -> C | a\nB -> C | b\nC -> CDE | CE | DE | E\nD -> A | B | ab",
         )
 
     def test_no_quedan_producciones_epsilon(self):

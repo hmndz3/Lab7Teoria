@@ -1,7 +1,7 @@
 # Gramatica 2 - Ejercicio No. 2
 # Convencion: MAYUSCULA = no terminal, minuscula/digito = terminal, ε = cadena vacia
-S -> ABaC
-A -> BC
-B -> b | ε
-C -> D | ε
-D -> d
+S -> aAa | bBb | ε
+A -> C | a
+B -> C | b
+C -> CDE | ε
+D -> A | B | ab
