@@ -84,6 +84,10 @@ def ejecutar(ruta, preservar_vacio=False):
         print(f"\n   {cabeza} -> {texto_cuerpo}   (anulables marcados: {marcados})")
         total = 2 ** m
         print(f"      m = {m}  =>  2^{m} = {total} {'caso' if total == 1 else 'casos'}")
+        repetidos = total - len(combinaciones)
+        if repetidos:
+            plural = "caso genera" if repetidos == 1 else "casos generan"
+            print(f"      ({repetidos} {plural} un cuerpo repetido, no se agrega dos veces)")
         for nuevo, decision in combinaciones:
             resultado = "".join(nuevo) if nuevo else "ε"
             quitados = [
